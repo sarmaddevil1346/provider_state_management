@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_state_management/provider_controller/counter_provider_controller.dart';
+import 'package:provider_state_management/provider_controller/opacity_controller.dart';
 
 import 'Views/counter_example.dart';
-
+import 'Views/opacity.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,15 +14,22 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => CounterExampleProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => CounterExampleProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => OpacityExampleCounter(),
+        ),
+      ],
       child: MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const CounterExample()),
+          home: const OpacityEx()),
     );
   }
 }

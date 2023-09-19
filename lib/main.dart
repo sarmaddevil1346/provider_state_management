@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_state_management/provider_controller/counter_provider_controller.dart';
 import 'package:provider_state_management/provider_controller/darktheme_contoller.dart';
+import 'package:provider_state_management/provider_controller/loginController.dart';
 import 'package:provider_state_management/provider_controller/opacity_controller.dart';
 
+import 'Views/Login_Provider/login_screen.dart';
 import 'Views/counter_example.dart';
 import 'Views/dark_theme.dart';
 import 'Views/opacity.dart';
@@ -28,6 +30,9 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(
             create: (_) => ThemeController(),
           ),
+          ChangeNotifierProvider(
+            create: (_) => LoginProvider(),
+          ),
         ],
         child: Builder(
           builder: (context) {
@@ -41,7 +46,7 @@ class MyApp extends StatelessWidget {
               darkTheme: ThemeData(
                 brightness: Brightness.dark,
               ),
-              home: const StatelessAsStateFull(),
+              home: const LoginScreen(),
             );
           },
         ));

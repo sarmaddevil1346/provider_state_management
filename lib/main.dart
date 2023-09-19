@@ -7,6 +7,7 @@ import 'package:provider_state_management/provider_controller/opacity_controller
 import 'Views/counter_example.dart';
 import 'Views/dark_theme.dart';
 import 'Views/opacity.dart';
+import 'Views/stateless_as_stateful.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         ],
         child: Builder(
           builder: (context) {
-            final themeChanger  =  Provider.of<ThemeController>(context);
+            final themeChanger = Provider.of<ThemeController>(context);
             return MaterialApp(
               themeMode: themeChanger.theme,
               theme: ThemeData(
@@ -40,9 +41,7 @@ class MyApp extends StatelessWidget {
               darkTheme: ThemeData(
                 brightness: Brightness.dark,
               ),
-              home: const DarkThemeExample(
-
-              ),
+              home: const StatelessAsStateFull(),
             );
           },
         ));
